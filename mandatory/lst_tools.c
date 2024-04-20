@@ -87,3 +87,16 @@ t_stack	*ft_lstlast(t_stack *lst)
 	}
 	return (lst);
 }
+
+int    ft_lstsize(t_stack *lst)
+{
+	int i;
+
+	i = 0;
+	while (lst)
+	{
+		i++;
+		lst = lst->next;
+	}
+	return (i);
+}

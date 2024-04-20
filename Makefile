@@ -22,8 +22,8 @@ SRCS = mandatory/ft_moves.c mandatory/ft_push_swap.c mandatory/tools.c \
 
 OBJS = ${SRCS:.c=.o}
 
-# %.o: %.c ft_push_swap.h
-# 	${CC} -o $@ ${CFLAGS} $<
+%.o: %.c ft_push_swap.h
+	${CC} -o $@ ${CFLAGS} -c $<
 
 all : ${NAME}
 

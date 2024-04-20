@@ -56,3 +56,10 @@ void   display_stack(t_stack *stack)
     }
 	printf("[NULL]\n");
 }
+
+int   is_space(char c)
+{
+    if (c == ' ' || (c >= 9 && c <= 13))
+        return (1);
+    return (0);
+}

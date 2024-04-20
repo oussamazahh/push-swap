@@ -34,6 +34,7 @@ t_stack	*ft_lstlast(t_stack *lst);
 void    del_last(t_stack **stack);
 
 void   display_stack(t_stack *stack);
+int   is_space(char c);
 //moves
 void	swap_a(t_stack **a, t_stack **b, char *str);
 void    swap_b(t_stack **a, t_stack **b, char *str);
