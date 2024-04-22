@@ -6,7 +6,7 @@
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:54:12 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/04/16 19:37:20 by ozahidi          ###   ########.fr       */
+/*   Updated: 2024/04/21 15:58:31 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void    swap_a(t_stack **a, t_stack **b, char *str)
     write(1, str, ft_strlen(str));
     if (*str != '\0')
         write(1, "\n", 1);
+    reset_index(a, b);
 }
 
 void    swap_b(t_stack **a, t_stack **b, char *str)
@@ -36,6 +37,7 @@ void    swap_b(t_stack **a, t_stack **b, char *str)
     write(1, str, ft_strlen(str));
     if (*str != '\0')
         write(1, "\n", 1);
+    reset_index(a, b);
 }
 
 void    swap_a_b(t_stack **a, t_stack **b, char *str)
@@ -44,6 +46,7 @@ void    swap_a_b(t_stack **a, t_stack **b, char *str)
     swap_b(a, b, "");
     write(1, str, ft_strlen(str));
     write(1, "\n", 1);
+    reset_index(a, b);
 }
 
 void    push_a(t_stack **a, t_stack **b, char *str)
@@ -57,6 +60,7 @@ void    push_a(t_stack **a, t_stack **b, char *str)
     del_first(b);
     write(1, str, ft_strlen(str));
     write(1, "\n", 1);
+    reset_index(a, b);
 }
 
 void    push_b(t_stack **a, t_stack **b, char *str)
@@ -70,6 +74,7 @@ void    push_b(t_stack **a, t_stack **b, char *str)
     del_first(a);
     write(1, str, ft_strlen(str));
     write(1, "\n", 1);
+    reset_index(a, b);
 }
 
 void    rotate_a(t_stack **a, t_stack **b, char *str)
@@ -83,6 +88,7 @@ void    rotate_a(t_stack **a, t_stack **b, char *str)
     write(1, str, ft_strlen(str));
     if (*str != '\0')
         write(1, "\n", 1);
+    reset_index(a, b);
 }
 
 void    rotate_b(t_stack **a, t_stack **b, char *str)
@@ -96,6 +102,7 @@ void    rotate_b(t_stack **a, t_stack **b, char *str)
     write(1, str, ft_strlen(str));
     if (*str != '\0')
         write(1, "\n", 1);
+    reset_index(a, b);
 }
 
 void    rotate_a_b(t_stack **a, t_stack **b, char *str)
@@ -104,6 +111,7 @@ void    rotate_a_b(t_stack **a, t_stack **b, char *str)
     rotate_b(a, b, "");
     write(1, str, ft_strlen(str));
     write(1, "\n", 1);
+    reset_index(a, b);
 }
 
 void    reverse_rotate_a(t_stack **a, t_stack **b, char *str)
@@ -117,6 +125,7 @@ void    reverse_rotate_a(t_stack **a, t_stack **b, char *str)
     write(1, str, ft_strlen(str));
     if (*str != '\0')
         write(1, "\n", 1);
+    reset_index(a, b);
 }
 
 void    reverse_rotate_b(t_stack **a, t_stack **b, char *str)
@@ -130,6 +139,7 @@ void    reverse_rotate_b(t_stack **a, t_stack **b, char *str)
     write(1, str, ft_strlen(str));
     if (*str != '\0')
         write(1, "\n", 1);
+    reset_index(a, b);
 }
 
 void    reverse_rotate_a_b(t_stack **a, t_stack **b, char *str)
@@ -138,4 +148,5 @@ void    reverse_rotate_a_b(t_stack **a, t_stack **b, char *str)
     reverse_rotate_b(a, b, "");
     write(1, str, ft_strlen(str));
     write(1, "\n", 1);
+    reset_index(a, b);
 }

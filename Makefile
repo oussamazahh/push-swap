@@ -6,7 +6,7 @@
 #    By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/16 15:03:21 by ozahidi           #+#    #+#              #
-#    Updated: 2024/04/16 19:49:45 by ozahidi          ###   ########.fr        #
+#    Updated: 2024/04/21 10:21:04 by ozahidi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,15 +22,15 @@ SRCS = mandatory/ft_moves.c mandatory/ft_push_swap.c mandatory/tools.c \
 
 OBJS = ${SRCS:.c=.o}
 
-%.o: %.c ft_push_swap.h
-	${CC} -o $@ ${CFLAGS} -c $<
-
 all : ${NAME}
 
-${NAME} :
+${NAME} : ${OBJS}
 	make -C libft/
 	make -C ft_printf/
 	${CC} ${CFLAGS} ${SRCS} -o ${NAME} libft/libft.a ft_printf/libftprintf.a
+
+%.o: %.c ft_push_swap.h
+	${CC} -o $@ ${CFLAGS} $<
 
 clean:
 	make clean -C libft/

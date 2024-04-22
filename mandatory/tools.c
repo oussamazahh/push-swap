@@ -6,40 +6,11 @@
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:06:57 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/04/16 19:57:11 by ozahidi          ###   ########.fr       */
+/*   Updated: 2024/04/21 17:11:52 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
-
-int	ft_atoi(const char *str)
-{
-	int					i;
-	int					sign;
-	unsigned long long	n;
-
-	i = 0;
-	n = 0;
-	sign = 1;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-' || (str[i] == '+'))
-	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		n = (n * 10) + (str[i] - 48);
-		if (n > 9223372036854775807 && sign == -1)
-			return (0);
-		if (n > 9223372036854775807 && sign == 1)
-			return (-1);
-		i++;
-	}
-	return ((int)n * sign);
-}
 
 void   display_stack(t_stack *stack)
 {
@@ -50,16 +21,45 @@ void   display_stack(t_stack *stack)
     i = 0;
     while (tmp != NULL)
     {
-        printf("[%d] => ",tmp->nbr);
+        printf("[%d[%d]] => ",tmp->nbr, tmp->index);
         tmp = tmp->next;
         i++;
     }
 	printf("[NULL]\n");
 }
 
-int   is_space(char c)
+int	lst_size(t_stack *stack)
 {
-    if (c == ' ' || (c >= 9 && c <= 13))
-        return (1);
-    return (0);
+	int size;
+
+	size = 0;
+	while (stack)
+	{
+		size++;
+		stack = stack->next;
+	}
+	return (size);
+}
+
+void    reset_index(t_stack **a, t_stack **b)
+{
+    int i;
+    t_stack *tmp;
+
+    i = 0;
+    tmp = *a;
+    while (tmp)
+    {
+        tmp->index = i;
+        i++;
+        tmp = tmp->next;
+    }
+    i = 0;
+    tmp = *b;
+    while (tmp)
+    {
+        tmp->index = i;
+        i++;
+        tmp = tmp->next;
+    }
 }

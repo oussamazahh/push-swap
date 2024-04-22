@@ -6,7 +6,7 @@
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:54:56 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/04/16 19:47:52 by ozahidi          ###   ########.fr       */
+/*   Updated: 2024/04/21 15:54:46 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ t_stack	*ft_lstnew(int nb, int i);
 void    del_first(t_stack **stack);
 t_stack	*ft_lstlast(t_stack *lst);
 void    del_last(t_stack **stack);
+int		lst_size(t_stack *stack);
+void    reset_index(t_stack **a, t_stack **b);
 
 void   display_stack(t_stack *stack);
-int   is_space(char c);
 //moves
 void	swap_a(t_stack **a, t_stack **b, char *str);
 void    swap_b(t_stack **a, t_stack **b, char *str);

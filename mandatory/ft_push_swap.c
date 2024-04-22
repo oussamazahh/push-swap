@@ -6,18 +6,27 @@
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:53:57 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/04/18 15:21:59 by ozahidi          ###   ########.fr       */
+/*   Updated: 2024/04/21 20:11:18 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
+int   is_space(char c)
+{
+    if (c == ' ' || c == '\t')
+        return (1);
+    return (0);
+}
+
 int check_correct_nbr(char **av)
 {
     int j;
     int i;
+    int h;
 
     j = 1;
+    h = 0;
     while (av[j])
     {
         i = 0;
@@ -27,65 +36,80 @@ int check_correct_nbr(char **av)
             {
                 return (1);
             }
+            if (ft_isdigit(av[j][i]) == 1)
+            {
+                h++;
+            }
+            if ((av[j][i] == '-' || av[j][i] == '+') && ft_isdigit(av[j][i + 1]) == 0)
+                return (1);
             i++;
         }
         j++;
     }
+    if (h == 0)
+        return (1);
     return (0);
 }
-int   add_to(char ***all, char **split)
-{
-    int i = 0;
-    int j = 0;
-    int all_length = 0;
-    int split_length = 0;
-    char **new_all;
-
-    while ((*all) && (*all)[all_length])
-        all_length++;
-    while (split[split_length])
-        split_length++;
-
-    new_all = (char**)malloc((all_length + split_length + 1) * sizeof(char*)); // allocate memory for 'new_all'
-    if (new_all == NULL) {
-        // handle error
-    }
-
-    while ((*all) && (*all)[i])
-    {
-        new_all[i] = (*all)[i];
-        i++;
-    }
-    while (split[j])
-    {
-        new_all[i] = ft_strdup(split[j]);
-        i++;
-        j++;
-    }
-    new_all[i] = NULL; // null terminate the array
-
-    free(*all); // free the old 'all'
-    *all = new_all; // update the 'all' pointer
-    return (all_length + split_length );
-}
-
-int _checknumbers(int *tab, int numbers)
+void    ft_free(char **all)
 {
     int i;
-    int j;
-    int tab1[numbers];
 
-    i = 1;
+    i = 0;
+    while (all[i])
+    {
+        free(all[i]);
+        i++;
+    }
+    free(all);
+}
+
+void    _fill_all(char ***all,char **split)
+{
+    int lenght_split;
+    int lenght_all;
+    char **new;
+    int i;
+    int j;
+
+    lenght_all = 0;
+    lenght_split = 0;
+     while ((*all) && (*all)[lenght_all])
+        lenght_all++;
+    while ((split) && split[lenght_split])
+        lenght_split++;
+    new = malloc(sizeof(char *) * (lenght_all + lenght_split) + 1);
+    if (!new)
+        return ;
+    new[(lenght_all + lenght_split)] = NULL;
+    i = 0;
+    while ((*all) && (*all)[i])
+    {
+        new[i] = ft_strdup((*all)[i]);
+        i++;
+    }
+    j = 0;
+    while ((split) && split[j])
+        new[i++] = split[j++];
+    free(split);
+    if (*all)
+        ft_free(*all);
+    (*all) = new;
+}
+
+int     check_numbers(int *tab, int a)
+{
+    int i = 1;
+    int j;
+    int tab1[a];
+
     tab1[0] = tab[0];
-    while (i < numbers)
+    while (i < a)
     {
         j = 0;
         while (j < i)
         {
             if (tab1[j] == tab[i])
-            {
                 return (1);
-            }
             j++;
         }
         tab1[i] = tab[i];
@@ -93,41 +117,146 @@ int _checknumbers(int *tab, int numbers)
     }
     return (0);
 }
-int main(int ac, char **av)
+
+int order_stack(t_stack *a)
 {
-    char    **all;
-    t_stack *head;
-    int     i;
-    int numbers= 0 ;
-    if (ac > 1 && check_correct_nbr(av) == 0)
+    int nb;
+
+    nb = -2147483648;
+    while (a)
     {
-        i = 1;
-        while(i < ac)
+        if (nb > a->nbr)
+            return (1);
+        nb = a->nbr;
+        a = a->next;
+    }
+    return (0);
+}
+int index_of_big(t_stack *a)
+{
+    t_stack *tmp;
+    int     big;
+    int     index;
+
+    tmp = a;
+    big = a->nbr;
+    index = 0;
+    while (tmp)
+    {
+        if (big < tmp->nbr)
+            big =  tmp->nbr;
+        tmp = tmp->next;
+    }
+    tmp = a;
+    while (tmp)
+    {
+        if (big == tmp->nbr)
+            index = tmp->index;
+        tmp = tmp->next;
+    }
+    return (index);
+}
+
+void order_in3(t_stack **a, t_stack **b)
+{
+    int     index;
+    (void )b;
+    index = index_of_big(*a);
+    printf("index %d\n", index);
+    if (index == 0)
+    {
+        rotate_a (a, b, "ra");
+        if ((*a)->nbr > (*a)->next->nbr)
+            swap_a(a, b, "sa");
+    }
+    if (index == 1)
+    {
+        reverse_rotate_a(a, b, "rra");
+        if ((*a)->nbr > (*a)->next->nbr)
+            swap_a(a, b, "sa");
+    }
+    if (index == 2)
+    {
+        if ((*a)->nbr > (*a)->next->nbr)
+            swap_a(a, b, "sa");
+    }
+}
+
+void    _create_stack(t_stack **a, t_stack **b, int  *tab, int   i)
+{
+    int j;
+
+    j = 0;
+    while (j < i)
+    {
+        ft_lstadd_back(a, ft_lstnew(tab[j], j));
+        j++;
+    }
+    printf("stack a \n");
+    display_stack(*a);
+    if (order_stack(*a) == 1)
+    {
+        if (lst_size(*a) == 1)
+            printf("OK\n");
+        if (lst_size(*a) == 2)
         {
-            numbers = add_to(&all, ft_split(av[i]));
-            i++;
+            rotate_a(a, NULL, "ra");
+            printf("OK\n");
         }
-        i = 0;
-        head = NULL;
-        int tab[numbers];
-        while (all[i])
+        if (lst_size(*a) == 3)
         {
-            tab[i] = ft_atoi(all[i]);
-            ft_lstadd_back(&head, ft_lstnew(tab[i], i));
-            ft_printf("%d \n", tab[i]);
-            i++;
-        }
-        if (_checknumbers(tab, numbers) == 0)
-        {
-            printf("stack a \n");
-            display_stack(head);
-        }
-        else
-        {
-            ft_printf("sidna rak kt dhak elina f numbers\n");
-            exit(1);
+            order_in3(a, b);
+            printf("after \n");
+            display_stack(*a);
         }
     }
     else
-        write(1, "sidna rak kt dhak elina\n", 24);
+        ft_printf("OK\n");
+}
+void    ft_free_stack(t_stack **a, t_stack **b)
+{
+    while (*a)
+    {
+        free(*a);
+        *a = NULL;
+        *a = (*a)->next;
+    }
+    free(*a);
+    while (*b)
+    {
+        free(*b);
+        *b = (*b)->next;
+    }   
+    free(*b); 
+}
+int main(int ac, char **av)
+{
+    char **all = NULL;
+    t_stack *a;
+    t_stack *b;
+    int  i;
+
+    if (ac > 1 && check_correct_nbr(av) == 0)
+    {
+        i = 1;
+        a = NULL;
+        b = NULL;
+        while (av[i])
+            _fill_all(&all, ft_split(av[i++]));
+        int tab[i];
+        i = 0;
+        while (all[i])
+        {
+            tab[i] = ft_atoi(all[i]);
+            i++;
+        }
+        if (check_numbers(tab ,i) == 0)
+            _create_stack(&a, &b, tab, i);
+        else
+            ft_printf("Error\n");
+    }
+    else
+        ft_printf("Error\n");
+    while (1);
+    
 }

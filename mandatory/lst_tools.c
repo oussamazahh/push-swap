@@ -6,7 +6,7 @@
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 16:50:28 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/04/16 19:18:34 by ozahidi          ###   ########.fr       */
+/*   Updated: 2024/04/21 19:59:06 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void    del_first(t_stack **stack)
 
     tmp = (*stack)->next;
     free(*stack);
+	*stack = NULL;
     *stack = tmp;
 }
 
@@ -77,26 +78,13 @@ void    del_last(t_stack **stack)
 	tmp->next = NULL;
 }
 
-t_stack	*ft_lstlast(t_stack *lst)
+t_stack	*ft_lstlast(t_stack *stack)
 {
-	while (lst != NULL)
+	while (stack != NULL)
 	{
-		if (lst->next == NULL)
-			return (lst);
-		lst = lst->next;
+		if (stack->next == NULL)
+			return (stack);
+		stack = stack->next;
 	}
-	return (lst);
-}
-
-int    ft_lstsize(t_stack *lst)
-{
-	int i;
-
-	i = 0;
-	while (lst)
-	{
-		i++;
-		lst = lst->next;
-	}
-	return (i);
+	return (stack);
 }

@@ -6,7 +6,7 @@
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:26:38 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/01/05 13:56:32 by ozahidi          ###   ########.fr       */
+/*   Updated: 2024/04/21 10:52:36 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static size_t	count_word(char const *s)
 	while (s[i])
 	{
 		word = 0;
-		while ((s[i] == ' '  || s[i] == '\t') && s[i])
+		while ((s[i] == ' ' || s[i] == '\t') && s[i])
 			i++;
-		while (s[i] != ' '  && s[i] != '\t' && s[i])
+		while (s[i] != ' ' && s[i] != '\t' && s[i])
 		{
 			if (word == 0)
 				count++;
@@ -69,10 +69,10 @@ char	**ft_split(char const *s)
 	j = 0;
 	while (s[i] && j < count_word(s) && i < ft_strlen(s))
 	{
-		while ((s[i] == ' '  || s[i] == '\t') && s[i])
+		while ((s[i] == ' ' || s[i] == '\t') && s[i])
 			i++;
 		start = i;
-		while (s[i] != ' '  && s[i] != '\t' && s[i])
+		while (s[i] != ' ' && s[i] != '\t' && s[i])
 			i++;
 		split[j++] = ft_substr(s, start, i - start);
 		if (!split[j - 1])
