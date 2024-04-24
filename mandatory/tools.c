@@ -6,7 +6,7 @@
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:06:57 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/04/21 17:11:52 by ozahidi          ###   ########.fr       */
+/*   Updated: 2024/04/24 15:53:37 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,21 @@ void    reset_index(t_stack **a, t_stack **b)
         i++;
         tmp = tmp->next;
     }
+}
+
+int ft_calcule_moyen(t_stack *b, int size)
+{
+    int avg;
+    int value;
+
+    avg = 0;
+    value = 0;
+    while (b)
+    {
+        value += b->nbr;
+        b = b->next;
+    }
+     if (size != 0)
+        avg = value / size;
+    return (avg);
 }

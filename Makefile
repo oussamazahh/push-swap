@@ -6,7 +6,7 @@
 #    By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/16 15:03:21 by ozahidi           #+#    #+#              #
-#    Updated: 2024/04/21 10:21:04 by ozahidi          ###   ########.fr        #
+#    Updated: 2024/04/24 15:22:26 by ozahidi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
 
 SRCS = mandatory/ft_moves.c mandatory/ft_push_swap.c mandatory/tools.c \
-	mandatory/lst_tools.c
+	mandatory/lst_tools.c mandatory/ft_operations.c
 
 OBJS = ${SRCS:.c=.o}
 

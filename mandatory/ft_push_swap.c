@@ -6,7 +6,7 @@
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:53:57 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/04/21 20:11:18 by ozahidi          ###   ########.fr       */
+/*   Updated: 2024/04/24 15:41:41 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,6 +209,10 @@ void    _create_stack(t_stack **a, t_stack **b, int  *tab, int   i)
             printf("after \n");
             display_stack(*a);
         }
+        if (lst_size(*a) > 3)
+        {
+            push_swap(a, b);
+        }
     }
     else
         ft_printf("OK\n");
@@ -254,9 +258,10 @@ int main(int ac, char **av)
             _create_stack(&a, &b, tab, i);
         else
             ft_printf("Error\n");
+        
     }
     else
         ft_printf("Error\n");
-    while (1);
+    // while (1);
     
 }

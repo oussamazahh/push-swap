@@ -6,7 +6,7 @@
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:54:56 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/04/21 15:54:46 by ozahidi          ###   ########.fr       */
+/*   Updated: 2024/04/24 15:39:57 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,9 @@ void    rotate_a_b(t_stack **a, t_stack **b, char *str);
 void    reverse_rotate_a(t_stack **a, t_stack **b, char *str);
 void    reverse_rotate_b(t_stack **a, t_stack **b, char *str);
 void    reverse_rotate_a_b(t_stack **a, t_stack **b, char *str);
+
+//algo
+
+void    push_swap(t_stack **a, t_stack **b);
+int ft_calcule_moyen(t_stack *b, int size);//moyen
 #endif
