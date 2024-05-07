@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.h                                     :+:      :+:    :+:   */
+/*   ft_push_swap_bonus.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:54:56 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/05/06 10:44:35 by ozahidi          ###   ########.fr       */
+/*   Updated: 2024/05/06 21:50:30 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PUSH_SWAP_H
-# define FT_PUSH_SWAP_H
+#ifndef FT_PUSH_SWAP_BONUS_H
+# define FT_PUSH_SWAP_BONUS_H
 
 # include "../Tools/ft_tools.h"
 # include <limits.h>
@@ -31,7 +31,7 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
-void				ft_lstadd_back(t_stack **lst, t_stack *new);
+void				ft_lstadd_back(t_stack **stack, t_stack *new);
 void				ft_lstadd_front(t_stack **stack, t_stack *new);
 t_stack				*ft_lstnew(int nb, int i);
 int					lst_size(t_stack *stack);
@@ -41,21 +41,22 @@ void				_create_tab(char **all, t_stack **a, t_stack **b, int i);
 void				_create_stack(t_stack **a, t_stack **b, int *tab, int i);
 int					len_double_p(char **double_all);
 void				sort_stack(t_stack **a, t_stack **b);
-
+void				_instractions(t_stack **a, t_stack **b);
+void				ft_exiit(void);
 // void				display_stack(t_stack *stack);
 // void				display_stack2(t_stack *stack);
 //moves
-void				swap_a(t_stack **a, t_stack **b, char *str);
-void				swap_b(t_stack **a, t_stack **b, char *str);
-void				swap_a_b(t_stack **a, t_stack **b, char *str);
-void				push_a(t_stack **a, t_stack **b, char *str);
-void				push_b(t_stack **a, t_stack **b, char *str);
-void				rotate_a(t_stack **a, t_stack **b, char *str);
-void				rotate_b(t_stack **a, t_stack **b, char *str);
-void				rotate_a_b(t_stack **a, t_stack **b, char *str);
-void				reverse_rotate_a(t_stack **a, t_stack **b, char *str);
-void				reverse_rotate_b(t_stack **a, t_stack **b, char *str);
-void				reverse_rotate_a_b(t_stack **a, t_stack **b, char *str);
+void				swap_a(t_stack **a, t_stack **b);
+void				swap_b(t_stack **a, t_stack **b);
+void				swap_a_b(t_stack **a, t_stack **b);
+void				push_a(t_stack **a, t_stack **b);
+void				push_b(t_stack **a, t_stack **b);
+void				rotate_a(t_stack **a, t_stack **b);
+void				rotate_b(t_stack **a, t_stack **b);
+void				rotate_a_b(t_stack **a, t_stack **b);
+void				reverse_rotate_a(t_stack **a, t_stack **b);
+void				reverse_rotate_b(t_stack **a, t_stack **b);
+void				reverse_rotate_a_b(t_stack **a, t_stack **b);
 
 //algo
 

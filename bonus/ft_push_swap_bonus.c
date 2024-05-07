@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.c                                     :+:      :+:    :+:   */
+/*   ft_push_swap_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:53:57 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/05/06 21:49:21 by ozahidi          ###   ########.fr       */
+/*   Updated: 2024/05/06 21:50:06 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "ft_push_swap_bonus.h"
 
 int	is_space_sign(char c)
 {
@@ -81,13 +81,14 @@ void	_create_stack(t_stack **a, t_stack **b, int *tab, int i)
 {
 	int	j;
 
+	(void)b;
 	j = 0;
 	while (j < i)
 	{
 		ft_lstadd_back(a, ft_lstnew(tab[j], j));
 		j++;
 	}
-	sort_stack(a, b);
+	free(tab);
 }
 
 int	main(int ac, char **av)
@@ -108,8 +109,13 @@ int	main(int ac, char **av)
 		while (av[i])
 			_fill_all(&all, ft_split(av[i++]), &len_all);
 		_create_tab(all, &a, &b, len_all);
+		_instractions(&a, &b);
+		if (lst_size(b) == 0 && !order_stack(a))
+			ft_printf("OK\n");
+		else
+			ft_printf("KO\n");
+		ft_free_stack(&a, &b);
 	}
 	else
-		ft_printf("Error\n");
-	ft_free_stack(&a, &b);
+		ft_exiit();
 }
