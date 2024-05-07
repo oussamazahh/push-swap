@@ -6,7 +6,7 @@
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:54:56 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/05/06 21:50:30 by ozahidi          ###   ########.fr       */
+/*   Updated: 2024/05/07 16:10:02 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "../Tools/ft_tools.h"
 # include <limits.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -43,8 +42,6 @@ int					len_double_p(char **double_all);
 void				sort_stack(t_stack **a, t_stack **b);
 void				_instractions(t_stack **a, t_stack **b);
 void				ft_exiit(void);
-// void				display_stack(t_stack *stack);
-// void				display_stack2(t_stack *stack);
 //moves
 void				swap_a(t_stack **a, t_stack **b);
 void				swap_b(t_stack **a, t_stack **b);

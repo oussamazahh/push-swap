@@ -6,7 +6,7 @@
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:53:57 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/05/06 21:50:06 by ozahidi          ###   ########.fr       */
+/*   Updated: 2024/05/07 15:47:02 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ void	_create_stack(t_stack **a, t_stack **b, int *tab, int i)
 		ft_lstadd_back(a, ft_lstnew(tab[j], j));
 		j++;
 	}
-	free(tab);
 }
 
 int	main(int ac, char **av)
@@ -99,8 +98,10 @@ int	main(int ac, char **av)
 	int		i;
 	int		len_all;
 
-	if (ac > 1 && check_correct_nbr(av) == 0)
+	if (ac > 1)
 	{
+		if (check_correct_nbr(av) == 1)
+			ft_exiit();
 		i = 1;
 		len_all = 0;
 		a = NULL;
@@ -116,6 +117,4 @@ int	main(int ac, char **av)
 			ft_printf("KO\n");
 		ft_free_stack(&a, &b);
 	}
-	else
-		ft_exiit();
 }

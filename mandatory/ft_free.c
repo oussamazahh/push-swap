@@ -6,7 +6,7 @@
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:35:23 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/05/06 21:49:30 by ozahidi          ###   ########.fr       */
+/*   Updated: 2024/05/07 15:21:28 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,10 @@ void	ft_free_stack(t_stack **a, t_stack **b)
 		*b = tmp;
 	}
 	free(*b);
+}
+
+void	ft_exiit(void)
+{
+	ft_printf("Error\n");
+	exit (2);
 }

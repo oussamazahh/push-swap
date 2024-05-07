@@ -6,7 +6,7 @@
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:30:11 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/05/06 19:07:34 by ozahidi          ###   ########.fr       */
+/*   Updated: 2024/05/07 16:09:10 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		ft_putchar(int c);
 int		ft_putu(unsigned int n);
 int		ft_putadd(unsigned long nb);
 int		ft_puthex(unsigned int nb, char c);
-int		ft_atoi(const char *str);
+int		ft_atoi(const char *str, int *err);
 void	ft_bzero(void *s, size_t n);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);

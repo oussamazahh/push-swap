@@ -6,7 +6,7 @@
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 13:20:26 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/05/06 19:36:33 by ozahidi          ###   ########.fr       */
+/*   Updated: 2024/05/07 15:22:08 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,21 +73,29 @@ int	check_numbers(int *tab, int a)
 void	_create_tab(char **all, t_stack **a, t_stack **b, int i)
 {
 	int	*tab;
+	int	err;
 
+	err = 0;
 	tab = malloc(sizeof(int) * i);
 	if (!tab)
 		return ;
 	i = 0;
 	while (all[i])
 	{
-		tab[i] = ft_atoi(all[i]);
+		tab[i] = ft_atoi(all[i], &err);
+		if (err == 1)
+		{
+			free(tab);
+			ft_free(all);
+			exit(1);
+		}
 		i++;
 	}
 	ft_free(all);
 	if (check_numbers(tab, i) == 0)
 		_create_stack(a, b, tab, i);
 	else
-		ft_printf("Error\n");
+		ft_exiit();
 	free(tab);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:53:57 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/05/06 21:49:21 by ozahidi          ###   ########.fr       */
+/*   Updated: 2024/05/07 16:24:58 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,18 +98,21 @@ int	main(int ac, char **av)
 	int		i;
 	int		len_all;
 
-	if (ac > 1 && check_correct_nbr(av) == 0)
+	if (ac > 1)
 	{
-		i = 1;
-		len_all = 0;
-		a = NULL;
-		b = NULL;
-		all = NULL;
-		while (av[i])
-			_fill_all(&all, ft_split(av[i++]), &len_all);
-		_create_tab(all, &a, &b, len_all);
+		if (check_correct_nbr(av) == 0)
+		{
+			i = 1;
+			len_all = 0;
+			a = NULL;
+			b = NULL;
+			all = NULL;
+			while (av[i])
+				_fill_all(&all, ft_split(av[i++]), &len_all);
+			_create_tab(all, &a, &b, len_all);
+			ft_free_stack(&a, &b);
+		}
+		else
+			ft_exiit();
 	}
-	else
-		ft_printf("Error\n");
-	ft_free_stack(&a, &b);
 }

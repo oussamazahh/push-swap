@@ -6,7 +6,7 @@
 #    By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/04 10:10:07 by ozahidi           #+#    #+#              #
-#    Updated: 2024/05/06 10:38:05 by ozahidi          ###   ########.fr        #
+#    Updated: 2024/05/07 16:10:32 by ozahidi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ OBJS = ${SRCS:.c=.o}
 
 BOBJS= ${BSRCS:.c=.o}
 
-%o : %c libft.h
+%o : %c ft_tools.h
 	${CC} -o $@ ${CFLAGS} -c $<
 
 all : ${NAME}
