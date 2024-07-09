@@ -6,7 +6,7 @@
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:42:14 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/05/02 14:43:47 by ozahidi          ###   ########.fr       */
+/*   Updated: 2024/05/07 17:32:24 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	rotate_a(t_stack **a, t_stack **b, char *str)
 
 	if (b)
 		(void)b;
+	if (lst_size(*a) == 1)
+		return ;
 	tmp = *a;
 	*a = (*a)->next;
 	tmp->next = NULL;
@@ -41,6 +43,8 @@ void	rotate_b(t_stack **a, t_stack **b, char *str)
 
 	if (a)
 		(void)a;
+	if (lst_size(*b) == 1)
+		return ;
 	tmp = *b;
 	*b = (*b)->next;
 	tmp->next = NULL;
@@ -70,6 +74,8 @@ void	reverse_rotate_a(t_stack **a, t_stack **b, char *str)
 	t_stack	*tmp1;
 
 	(void)*b;
+	if (lst_size(*a) == 1)
+		return ;
 	tmp1 = *a;
 	while (tmp1->next->next)
 		tmp1 = tmp1->next;
@@ -90,6 +96,8 @@ void	reverse_rotate_b(t_stack **a, t_stack **b, char *str)
 	t_stack	*tmp1;
 
 	(void)*a;
+	if (lst_size(*b) == 1)
+		return ;
 	tmp1 = *b;
 	while (tmp1->next->next)
 		tmp1 = tmp1->next;

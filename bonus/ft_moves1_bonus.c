@@ -6,7 +6,7 @@
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:42:14 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/05/06 21:50:57 by ozahidi          ###   ########.fr       */
+/*   Updated: 2024/05/07 17:38:07 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	rotate_a(t_stack **a, t_stack **b)
 	t_stack	*tmp;
 	t_stack	*tmp1;
 
+	if (!a || !*a || lst_size(*a) == 1)
+		return ;
 	(void)b;
 	tmp = *a;
 	*a = (*a)->next;
@@ -33,6 +35,8 @@ void	rotate_b(t_stack **a, t_stack **b)
 	t_stack	*tmp;
 	t_stack	*tmp1;
 
+	if (!b || !*b || lst_size(*b) == 1)
+		return ;
 	(void)a;
 	tmp = *b;
 	*b = (*b)->next;
@@ -55,6 +59,8 @@ void	reverse_rotate_a(t_stack **a, t_stack **b)
 	t_stack	*tmp;
 	t_stack	*tmp1;
 
+	if (!a || !*a || lst_size(*a) == 1)
+		return ;
 	(void)b;
 	tmp1 = *a;
 	while (tmp1->next->next)
@@ -70,6 +76,8 @@ void	reverse_rotate_b(t_stack **a, t_stack **b)
 	t_stack	*tmp;
 	t_stack	*tmp1;
 
+	if (!b || !*b || lst_size(*b) == 1)
+		return ;
 	(void)a;
 	tmp1 = *b;
 	while (tmp1->next->next)

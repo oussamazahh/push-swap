@@ -6,7 +6,7 @@
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:54:56 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/05/07 16:10:05 by ozahidi          ###   ########.fr       */
+/*   Updated: 2024/05/07 15:43:27 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../Tools/ft_tools.h"
 # include <limits.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 

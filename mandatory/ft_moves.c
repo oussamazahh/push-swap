@@ -6,7 +6,7 @@
 /*   By: ozahidi <ozahidi@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:54:12 by ozahidi           #+#    #+#             */
-/*   Updated: 2024/05/02 14:42:36 by ozahidi          ###   ########.fr       */
+/*   Updated: 2024/05/07 17:33:03 by ozahidi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	swap_a(t_stack **a, t_stack **b, char *str)
 {
 	int	tmp;
 
+	if (lst_size(*a) == 1)
+		return ;
 	(void)*b;
 	tmp = (*a)->nbr;
 	(*a)->nbr = (*a)->next->nbr;
@@ -29,6 +31,8 @@ void	swap_b(t_stack **a, t_stack **b, char *str)
 {
 	int	tmp;
 
+	if (lst_size(*b) == 1)
+		return ;
 	(void)*a;
 	tmp = (*b)->nbr;
 	(*b)->nbr = (*b)->next->nbr;
